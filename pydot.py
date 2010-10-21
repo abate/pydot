@@ -1179,7 +1179,9 @@ class Graph(object, Common):
         
             match.extend( [ Node( obj_dict = obj_dict ) for obj_dict in self.obj_dict['nodes'][name] ])
         
-        if len(match)==1:
+        if len(match)==0:
+            return None
+        elif len(match)==1:
             return match[0]
             
         return match
