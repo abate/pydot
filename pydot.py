@@ -896,8 +896,8 @@ class Edge(object,  Common ):
         edge_attr = list()
         
         for attr, value in self.obj_dict['attributes'].items():
-        
-            edge_attr.append( attr + '=' + quote_if_necessary(value) )
+            
+            edge_attr.append("%s=%s" % (attr, quote_if_necessary(value)))
 
         edge_attr = ', '.join(edge_attr)
         
