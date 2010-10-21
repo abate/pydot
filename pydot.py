@@ -779,6 +779,9 @@ class Edge(object,  Common ):
             
         self.create_attribute_methods(EDGE_ATTRIBUTES)
 
+    def __hash__(self):
+        return hash(self.get_source()+self.get_destination())
+
 
     def get_source(self):
         """Get the edges source node name."""
