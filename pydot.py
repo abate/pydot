@@ -1318,11 +1318,11 @@ class Graph(object, Common):
         None is returned otherwise.
         """
         
-        match = None
+        match = list()
         
-        if self.obj_dict['subgraphs'].has_key( sgraph.get_name() ):
+        if self.obj_dict['subgraphs'].has_key( name ):
         
-            sgraphs_obj_dict = self.obj_dict['subgraphs'].get( sgraph.get_name() )
+            sgraphs_obj_dict = self.obj_dict['subgraphs'].get( name )
         
             for obj_dict_list in sgraphs_obj_dict:
                 match = [ Subgraph( obj_dict = obj_d ) for obj_d in obj_dict_list ]
