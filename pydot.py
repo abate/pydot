@@ -832,7 +832,7 @@ class Edge(object,  Common ):
         if not isinstance(node_str, str):
             return node_str
     
-        if node_str.startswith('"') and node_str.endswith('"') and node_str.count('"') % 2 != 0:
+        if node_str.startswith('"') and node_str.endswith('"'):
         
             return node_str
         
