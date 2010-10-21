@@ -1557,6 +1557,7 @@ class Cluster(Graph):
             self.obj_dict['type'] = 'subgraph'
             self.obj_dict['name'] = 'cluster_'+graph_name
 
+        self.create_attribute_methods(CLUSTER_ATTRIBUTES)
 
 
    
