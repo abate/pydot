@@ -150,29 +150,17 @@ def needs_quotes( s ):
     If the string is one of the reserved keywords it will
     need quotes too.
     """
-        
+    # All keywords must be quoted
     if s in dot_keywords:
-        return False
-
-    chars = [ord(c) for c in s if ord(c)>0x7f or ord(c)==0]
-    if chars:
-        return False
-        
-    res = id_re_alpha_nums.match(s)
-    if not res:
-        res = id_re_num.match(s)
-        if not res:
-            res = id_re_dbl_quoted.match(s)
-            if not res:
-                res = id_re_html.match(s)
-                if not res:
-                    res = id_re_with_port.match(s)
-
-    if not res:
         return True
 
-    return False
+    # If any of these regexes match, then the string does not need quoting
+    if (id_re_alpha_nums.match(s) or id_re_num.match(s) or
+            id_re_dbl_quoted.match(s) or id_re_html.match(s) or
+            id_re_with_port.match(s)):
+        return False
 
+    return True
 
 
 def quote_if_necessary(s):
