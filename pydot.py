@@ -1455,7 +1455,7 @@ class Graph(object, Common):
 
                 edge = Edge(obj_dict=obj)
                 
-                if self.obj_dict.get('simplify', False) and elm in edges_done:
+                if self.obj_dict.get('simplify', False) and edge in edges_done:
                     continue
                 
                 graph.append( edge.to_string() + '\n' )
