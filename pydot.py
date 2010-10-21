@@ -234,7 +234,7 @@ def graph_from_edges(edge_list, node_prefix='', directed=False):
         
     for edge in edge_list:
 
-        e = Edge( node_prefix + edge[0], node_prefix + edge[1] )
+        e = Edge( node_prefix + str(edge[0]), node_prefix + str(edge[1]) )
         graph.add_edge(e)
         
     return graph
