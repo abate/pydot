@@ -26,6 +26,7 @@ from pyparsing import ( nestedExpr, Literal, CaselessLiteral, Word, Upcase, OneO
     ParseException, ParseResults, CharsNotIn, _noncomma, dblQuotedString, QuotedString, ParserElement )
 
 
+DEFAULT_ATTR_VALUE = 'true'
 
 class P_AttrList:
 
@@ -33,13 +34,18 @@ class P_AttrList:
 
         self.attrs = {}
         i = 0
-        
-        while i < len(toks):
-        
+        l = len(toks)
+        while i < l:
             attrname = toks[i]
-            attrvalue = toks[i+1]
+            if i + 2 < l and toks[i+1] == '=':
+                attrvalue = toks[i+2]
+                increment = 3
+            else:
+                attrvalue = DEFAULT_ATTR_VALUE
+                increment = 1
             self.attrs[attrname] = attrvalue
-            i += 2
+            
+            i += increment
 
     def __repr__(self):
 
@@ -223,7 +229,7 @@ def push_default_stmt(str, loc, toks):
 
 
 def push_attr_list(str, loc, toks):
-
+    
     p = P_AttrList(toks)
     return p
 
@@ -399,8 +405,8 @@ def graph_definition():
             Group(port_angle + Optional(port_location))).setName("port")
             
         node_id = (ID + Optional(port))
-        a_list = OneOrMore(ID + Optional(equals.suppress() + righthand_id) +	
-            Optional(comma.suppress())).setName("a_list")
+        a_list = OneOrMore(ID + Optional(equals + righthand_id) + # We don't want to suppress the equals,
+            Optional(comma.suppress())).setName("a_list")         # since there may be attributes with no values
             
         attr_list = OneOrMore(lbrack.suppress() + Optional(a_list) +	
             rbrack.suppress()).setName("attr_list")
