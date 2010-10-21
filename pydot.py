@@ -55,7 +55,7 @@ EDGE_ATTRIBUTES = set( ['URL', 'arrowhead', 'arrowsize', 'arrowtail', 'color',
     'labeldistance', 'labelfloat', 'labelfontcolor',
     'labelfontname', 'labelfontsize', 'labelhref', 'labeltarget',
     'labeltooltip', 'layer', 'len', 'lhead', 'lp', 'ltail',
-    'minlen', 'nojustify', 'pos', 'samehead', 'sametail',
+    'minlen', 'nojustify', 'penwidth', 'pos', 'samehead', 'sametail',
     'showboxes', 'style', 'tailURL', 'tailclip', 'tailhref',
     'taillabel', 'tailport', 'tailtarget', 'tailtooltip',
     'target', 'tooltip', 'weight'] + ['rank'] )
