@@ -1801,5 +1801,5 @@ class Dot(Graph):
 
         os.unlink(tmp_name)
         
-        return stdout_output
+        return stdout_output or ''
 
